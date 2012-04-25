@@ -13,6 +13,11 @@ The whole time the above happens, the table is locked.  If you do that to a tabl
 
 This script generates code that will allow you to do the modification in steps without locking the original table, enabling an online alteration without having to schedule a maintenance downtime.
 
+Usage:
+1. Modify alter_table.rb to put database connection parameters
+2. Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
+3. Take a look at the generated files
+
 TODO/Known Issues:
 * Current version does not handle foreign key constraints that reference the table to be modified.  At the end they will still reference the old table.  For now consider disabling foreign key checks then drop the original table before renaming the new table.
 

@@ -1,11 +1,13 @@
 require 'rubygems'
 require 'sequel'
 
+############################# CONFIGURE THE FOLLOWING ########################
 DBHOST = ""
 DBSCHEMA = ""
 DBUSER = ""
 DBPASS = ""
 BATCH_SIZE = 1000
+############################# END USER CONFIGURABLE PART ######################
 
 DB = Sequel.connect(:adapter => "mysql",
                     :host => DBHOST,
