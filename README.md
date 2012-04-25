@@ -18,9 +18,9 @@ This script generates code that will allow you to do the modification in steps w
 * Renaming the tables
 
 Usage:
-#. Modify alter_table.rb to put database connection parameters
-#. Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
-#. Take a look at the generated files and follow instructions
+- Modify alter_table.rb to put database connection parameters
+- Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
+- Take a look at the generated files and follow instructions
 
 TODO/Known Issues:
 * Current version does not handle foreign key constraints that reference the table to be modified.  At the end they will still reference the old table.  For now consider disabling foreign key checks then drop the original table before renaming the new table.
