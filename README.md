@@ -11,12 +11,16 @@ Altering large MySQL tables is a pain.  Almost every ALTER TABLE command results
 
 The whole time the above happens, the table is locked.  If you do that to a table with millions of rows, it will take minutes, even hours.
 
-This script generates code that will allow you to do the modification in steps without locking the original table, enabling an online alteration without having to schedule a maintenance downtime.
+This script generates code that will allow you to do the modification in steps without locking the original table, enabling an online alteration without having to schedule a maintenance downtime.  This involves: 
+* Creating a temporary copy of the table
+* Creating triggers so that changes on the original table will be reflected to the temporary copy
+* Copying data from the original table in batches
+* Renaming the tables
 
 Usage:
-1. Modify alter_table.rb to put database connection parameters
-2. Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
-3. Take a look at the generated files
+#. Modify alter_table.rb to put database connection parameters
+#. Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
+#. Take a look at the generated files and follow instructions
 
 TODO/Known Issues:
 * Current version does not handle foreign key constraints that reference the table to be modified.  At the end they will still reference the old table.  For now consider disabling foreign key checks then drop the original table before renaming the new table.
