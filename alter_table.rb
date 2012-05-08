@@ -102,7 +102,7 @@ DB = Sequel.connect(:adapter => 'mysql',:host => '#{DBHOST}', :database => '#{DB
 min_max = DB["select min(id) min_id, max(id) max_id from #{table_name}"]
 
 start_id = min_max.map(:min_id)[0].to_i
-end_id = start_id + BATCH_SIZE
+end_id = start_id + BATCH_SIZE - 1
 max_id = min_max.map(:max_id)[0].to_i
 
 while start_id < max_id do
