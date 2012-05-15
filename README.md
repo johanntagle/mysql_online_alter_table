@@ -19,7 +19,7 @@ This script generates code that will allow you to do the modification in steps w
 
 Usage:
 - Modify alter_table.rb to put database connection parameters
-- Run: ruby alter_table.rb <table_name> '<modifications>' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
+- Run: ruby alter_table.rb table_name 'modifications' e.g. ruby alter_table.rb my_table 'add new_column integer, add index (column_name)'
 - Take a look at the generated files and follow instructions
 
 TODO/Known Issues:
